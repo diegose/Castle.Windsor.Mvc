@@ -8,7 +8,7 @@ namespace Castle.Windsor.Mvc
 {
     public class WindsorControllerFactory : DefaultControllerFactory
     {
-        private readonly IKernel kernel;
+        readonly IKernel kernel;
 
         public WindsorControllerFactory(IKernel kernel)
         {
