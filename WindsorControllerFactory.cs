@@ -26,7 +26,9 @@ namespace Castle.Windsor.Mvc
                 throw new HttpException(404,
                                         string.Format("The controller for path '{0}' could not be found.",
                                                       requestContext.HttpContext.Request.Path));
-            return (IController)kernel.Resolve(controllerType);
+            if (kernel.HasComponent(controllerType))
+                return (IController)kernel.Resolve(controllerType);
+            return base.GetControllerInstance(requestContext, controllerType);
         }
     }
 }
